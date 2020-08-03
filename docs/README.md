@@ -1,10 +1,17 @@
-
 # quick_trade by Vlad Kochetov
 
 this package is needed to optimize and facilitate trading with python. the module provides a convenient API for trading.
 
 #### donate
+donationalerts:
+
 [![button](https://i.ibb.co/MgWmjsY/imgonline-com-ua-Resize-y-Wu-Bc-Rv7-KGALSc-Iw.jpg)](https://www.donationalerts.com/r/vladkochetov007)
+
+BTC: 15PrHJ743z2o7KSToNxpYf79gozatiGH6w
+
+ETH: 0x55aAb07b1436fDA7Bd5f85bF95469D1c6ca49E00
+
+USD Digital: 0x55aAb07b1436fDA7Bd5f85bF95469D1c6ca49E00
 
 ## tradyng_sys:
 the main file of quick_trade.
@@ -56,9 +63,108 @@ a function to get linear data from an argument.
 Ret type: np.array
 #### get_stop_take
 converts take profit and stop loss from points to specific numbers.
-It uses self.stop_loss, self.open_price, self.take_profit.
+It uses self.stop_loss, self.open_price, self.take_profit and signal.
 Ret type: dict
 ```
-{'stop': _stop_loss,
-'take': take}
+{'stop': stop_loss,
+'take': take_profit}
 ```
+#### strategy_diff
+strategy based on changing the input data (pd.DataFrame).
+Ret type: list of predicts.
+```
+trader.strategy_diff(trader.df['Close'])
+```
+#### strategy_N_ema / strategy_N_sma
+moving average strategy.
+
+<div align="left">
+  <img src="https://i.ibb.co/VDDQYJR/IMG-5583.jpg" width=900">
+</div>
+
+#### strategy_macd
+MACD strategy. MACD, MACD signal
+
+<div align="left">
+  <img src="https://i.ibb.co/s1fLBrG/2020-08-03-18-31-14.png" width=900">
+</div>
+
+#### strategy_exp_diff
+strategy_diff from tema of close.
+
+#### strategy_rsi
+RSI strategy.
+
+<div align="left">
+  <img src="https://i.ibb.co/hBvCXtQ/IMG-5588.jpg" width=900">
+</div>
+and:
+<div align="left">
+  <img src="https://i.ibb.co/RDvfVZT/IMG-5586.jpg" width=900">
+</div>
+
+#### strategy_macd_rsi
+if macd > 0 and rsi > N : buy
+if macd < 0 and rsi < N : sell
+
+#### strategy_parabolic_SAR
+PSAR strategy
+
+#### strategy_macd_histogram_diff
+based on MACD histogram
+<div align="left">
+  <img src="https://i.ibb.co/8YncjYN/IMG-5590.jpg" width=100">
+</div>
+
+#### get_network_regression
+a method that creates a neural network for regression.
+Based on https://medium.com/@randerson112358/stock-price-prediction-using-python-machine-learning-e82a039ac2bb
+
+#### strategy_regression_model
+a method that creates a series of neural network predictions from closure data.
+After that, the method produces strategy_diff and returns a
+tuple of predictions for trading and neural network predictions.
+```
+TICKER = 'EUR=X'
+df = yf.download(TICKER)
+trader = PatternFinder(TICKER, 0, df=df, interval='1d')
+trader.set_pyplot()
+trader.load_model('../model-regression')
+trader.strategy_regression_model()
+```
+or
+```
+TICKER = 'EUR=X'
+df = yf.download(TICKER)
+trader = PatternFinder(TICKER, 0, df=df, interval='1d')
+trader.set_pyplot()
+trader.get_network_regression([df])
+trader.strategy_regression_model()
+```
+#### get_trained_network
+a method that creates a trained neural network for predictions consisting of buy, sell, exit.
+The neural network receives data from ta.add_all_ta_features (my_df, fill_na = True).
+
+!> trading predictions are based on the Kalman filter that smoothes the data.
+
+```
+TICKER = 'EUR=X'
+df = yf.download(TICKER)
+trader = PatternFinder(TICKER, 0, df=df, interval='1d')
+trader.set_pyplot()
+trader.get_trained_network([df])
+trader.strategy_with_network()
+```
+#### strategy_with_network
+Strategy using a neural network made by the get_trained_network method.
+
+#### inverse_strategy
+Inverts signals in self.returns.
+- buy - sell
+- sell - buy
+- exit - exit
+
+#### basic_backtest
+Makes a backtest of the strategy, taking into account your parameters.
+Returns pd.DataFrame with all metadata.
+The console displays data containing information about the deposit.
