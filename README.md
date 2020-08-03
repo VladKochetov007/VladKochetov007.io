@@ -1,3 +1,4 @@
+
 # quick_trade by Vlad Kochetov
 
 this package is needed to optimize and facilitate trading with python. the module provides a convenient API for trading.
@@ -22,15 +23,42 @@ trader = PatternFinder(TICKER, 0, df=df, interval='1d')  #  please, use your df
 ```
 #### kalman_filter
 a method that returns the closure data to which the kalman filter has been applied N times.
+Ret type: pd.DataFrame
 ```
 trader.set_pyplot()
 filtered = trader.scipy_filter()
 trader.strategy_diff(filtered)
 ```
 #### scipy_filter
+a method that returns the closure data to which the scipy.signal.savgol_filter filter has been applied.
+Ret type: pd.DataFrame
 ```
 trader.set_pyplot()
 filtered = trader.kalman_filter()
 trader.strategy_diff(filtered)
 ```
-a method that returns the closure data to which the scipy.signal.savgol_filter filter has been applied.
+#### bull_power
+bull power indicator.
+Ret type: np.array
+```
+filtered = trader.bull_power(900)
+trader.strategy_diff(filtered)
+```
+#### tema
+triple exponential moмing averageю.
+Ret type: pd.DataFrame
+```
+filtered = trader.tema(70)
+trader.strategy_diff(filtered)
+```
+#### linear_
+a function to get linear data from an argument.
+Ret type: np.array
+#### get_stop_take
+converts take profit and stop loss from points to specific numbers.
+It uses self.stop_loss, self.open_price, self.take_profit.
+Ret type: dict
+```
+{'stop': _stop_loss,
+'take': take}
+```
