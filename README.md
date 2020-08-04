@@ -105,14 +105,15 @@ and:
 </div>
 
 ### strategy_macd_rsi
-if macd > 0 and rsi > N : buy
-if macd < 0 and rsi < N : sell
+if macd > 0 and rsi > N : buy.
+
+if macd < 0 and rsi < N : sell.
 
 ### strategy_parabolic_SAR
 PSAR strategy
 
 ### strategy_macd_histogram_diff
-Based on MACD histogram
+Based on MACD histogram.
 
 ![image](https://i.ibb.co/8YncjYN/IMG-5590.jpg)
 
