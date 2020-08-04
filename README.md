@@ -3,10 +3,6 @@
 This package is needed to optimize and facilitate trading with python. the module provides a convenient API for trading.
 
 #### donate
-Donationalerts:
-
-[![button](https://i.ibb.co/MgWmjsY/imgonline-com-ua-Resize-y-Wu-Bc-Rv7-KGALSc-Iw.jpg)](https://www.donationalerts.com/r/vladkochetov007)
-
 BTC: 15PrHJ743z2o7KSToNxpYf79gozatiGH6w
 
 ETH: 0x55aAb07b1436fDA7Bd5f85bF95469D1c6ca49E00
