@@ -24,7 +24,7 @@ The main file of quick_trade.
     - sell - 0.
     - the output of the strategy function has a list format:
          - [... 1, 1, 1, 0, 0, 1, 1, 1, 2, 2, 2, 0, 0 ...]
-
+-
 
 ```
 df = yf.download(TICKER, period='5y', interval='1d')
