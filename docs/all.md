@@ -20,7 +20,7 @@ The main file of quick_trade.
     - sell - 0.
     - the output of the strategy function has a list format:
          - [... 1, 1, 1, 0, 0, 1, 1, 1, 2, 2, 2, 0, 0 ...]
--
+
 
 ```
 df = yf.download(TICKER, period='5y', interval='1d')
@@ -143,7 +143,7 @@ A method that creates a trained neural network for predictions consisting of buy
 The neural network receives data from ta.add_all_ta_features (my_df, fill_na = True).
 
 
-!> trading predictions are based on the Kalman filter that smoothes the data.
+trading predictions are based on the Kalman filter that smoothes the data.
 
 
 ```
