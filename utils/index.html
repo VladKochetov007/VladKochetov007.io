@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="http://127.0.0.1:8000/utils/">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>utils - quick_trade</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "utils";
+    var mkdocs_page_input_path = "utils.md";
+    var mkdocs_page_url = "/utils/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+<script type="text/javascript">(function(){var s=document.createElement("script");var port=(window.location.port || (window.location.protocol == 'https:' ? 443: 80));s.src="//"+window.location.hostname+":"+port+ "/livereload.js?port=" + port;document.head.appendChild(s);})();</script></head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> quick_trade</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">documentation</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../all/">all doc</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../trading_sys/">trading_sys</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">utils</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#set_">set_</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#to_4_col_df">to_4_col_df</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#get_data">get_data</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#anti_set_">anti_set_</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#digit">digit</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#get_window">get_window</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#inverse_4_col_df">inverse_4_col_df</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../install/">install</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../about/">About</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">quick_trade</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>documentation &raquo;</li>
+        
+      
+    
+    <li>utils</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="utils">utils:</h1>
+<h3 id="set_">set_</h3>
+<p>This function performs an operation on the data, in which:
+if the element is equal to the previous one, then it becomes np.nan.</p>
+<pre><code>[2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 0, 0, 0]
+                                                                  to this
+[2, nan, nan, nan, nan, nan, nan, nan, 1, nan, nan, nan, nan, nan, 0, nan, 1, 0, 1, 0, nan, nan, 2, nan, nan, nan, nan, nan, 0, nan, nan, nan, nan, nan, 1, nan, nan, nan, 2, nan, nan, nan, nan, nan, 0, nan, nan]
+</code></pre>
+
+<h3 id="to_4_col_df">to_4_col_df</h3>
+<p>Сonverts list to pd.DataFrame</p>
+<pre><code>to_4_col_df([1,2,3,4,5,6,7,8,9,10,11,12], 'a', 'b', 'c', 'd')
+                        to this
+                (pd.DataFrame)
+                     a   b   c   d
+
+                0    1   2   3   4
+                1    5   6   7   8
+                2    9  10  11  12
+</code></pre>
+
+<h3 id="get_data">get_data</h3>
+<p>Getting IEX minutely data. Sometimes doesn't work.</p>
+<h3 id="anti_set_">anti_set_</h3>
+<p>opposite of set_</p>
+<h3 id="digit">digit</h3>
+<p>Splits the data into 3 categories:
+- 0
+- greater than zero
+- less than zero</p>
+<h3 id="get_window">get_window</h3>
+<pre><code>&gt;&gt;&gt; get_window([1,2,3,4,5,6,7,8,9], 3)
+&lt;&lt;&lt; [[1,2,3],
+     [2,3,4],
+     [3,4,5],
+     [4,5,6]
+     [5,6,7],
+     [6,7,8],
+     [7,8,9]]
+</code></pre>
+
+<h3 id="inverse_4_col_df">inverse_4_col_df</h3>
+<pre><code>&gt;&gt;&gt; inverse_4_col_df(to_4_col_df([1,2,3,4,5,6,7,8,9,10,11,12], *'abcd'), 'a')
+&lt;&lt;&lt;      a
+    0    1
+    1    2
+    2    3
+    3    4
+    4    5
+    5    6
+    6    7
+    7    8
+    8    9
+    9   10
+    10  11
+    11  12
+</code></pre>
+
+<pre><code>&gt;&gt;&gt; inverse_4_col_df(to_4_col_df([1,2,3,4,5,6,7,8,9,10,11,12], *'abcd'), 'cdf')
+&lt;&lt;&lt;      c   d   f
+    0    1   1   1
+    1    2   2   2
+    2    3   3   3
+    3    4   4   4
+    4    5   5   5
+    5    6   6   6
+    6    7   7   7
+    7    8   8   8
+    8    9   9   9
+    9   10  10  10
+    10  11  11  11
+    11  12  12  12
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../install/" class="btn btn-neutral float-right" title="install">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../trading_sys/" class="btn btn-neutral" title="trading_sys"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../trading_sys/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../install/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
