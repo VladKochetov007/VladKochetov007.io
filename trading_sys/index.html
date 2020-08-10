@@ -287,7 +287,7 @@ trader.strategy_regression_model()
 <h3 id="get_trained_network">get_trained_network</h3>
 <p>A method that creates a trained neural network for predictions consisting of buy, sell, exit.
 The neural network receives data from ta.add_all_ta_features (my_df, fill_na = True).</p>
-<p>trading predictions are based on the Kalman filter that smoothes the data.</p>
+<p>trading predictions are based on the Kalman or scipy filter that smoothes the data (and scaled ta.add_all_ta_features()).</p>
 <pre><code>TICKER = 'EUR=X'
 df = yf.download(TICKER)
 trader = PatternFinder(TICKER, 0, df=df, interval='1d')
