@@ -300,9 +300,12 @@ trader.strategy_with_network()
 <p>Strategy using a neural network made by the get_trained_network method.</p>
 <h3 id="inverse_strategy">inverse_strategy</h3>
 <p>Inverts signals in self.returns.
-- buy - sell
-- sell - buy
-- exit - exit</p>
+    <code>
+- buy > sell
+
+- sell > buy
+
+- exit > exit</code></p>
 <h3 id="basic_backtest">basic_backtest</h3>
 <p>Makes a backtest of the strategy, taking into account your parameters.
 Returns pd.DataFrame with all metadata.
@@ -349,7 +352,7 @@ trader.strategy_collider(args_first_func=(trader.returns,), args_second_func=(re
 <h3 id="log_deposit-log_data">log_deposit / log_data</h3>
 <p>Log X-axis on data/deposit</p>
 <h3 id="backtest">backtest</h3>
-<p>Similar to a backtest, but a candlestick deposit.</p>
+<p>Similar to a basic_backtest, but a candlestick deposit.</p>
 <h3 id="load_model">load_model</h3>
 <p>Loading model from path.</p>
 <h3 id="prepare_scaler">prepare_scaler</h3>
