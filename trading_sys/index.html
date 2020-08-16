@@ -53,8 +53,6 @@
                 </ul>
                 <p class="caption"><span class="caption-text">documentation</span></p>
                 <ul class="current">
-                    <li class="toctree-l1"><a class="reference internal" href="../all/">all doc</a>
-                    </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">trading_sys</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#patternfinder">PatternFinder</a>
@@ -299,13 +297,12 @@ trader.strategy_with_network()
 <h3 id="strategy_with_network">strategy_with_network</h3>
 <p>Strategy using a neural network made by the get_trained_network method.</p>
 <h3 id="inverse_strategy">inverse_strategy</h3>
-<p>Inverts signals in self.returns.
-    <code>
-- buy > sell
+<p>Inverts signals in self.returns.</p>
+<pre><code>- buy - sell
+- sell - buy
+- exit - exit
+</code></pre>
 
-- sell > buy
-
-- exit > exit</code></p>
 <h3 id="basic_backtest">basic_backtest</h3>
 <p>Makes a backtest of the strategy, taking into account your parameters.
 Returns pd.DataFrame with all metadata.
@@ -370,7 +367,7 @@ you need to prepare a scaler suitable for the perception of the neural network.<
         <a href="../utils/" class="btn btn-neutral float-right" title="utils">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../all/" class="btn btn-neutral" title="all doc"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -396,7 +393,7 @@ you need to prepare a scaler suitable for the perception of the neural network.<
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../all/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../utils/" style="color: #fcfcfc">Next &raquo;</a></span>
