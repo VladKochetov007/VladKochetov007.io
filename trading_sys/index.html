@@ -57,6 +57,8 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#patternfinder">PatternFinder</a>
         <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#set_client">set_client</a>
+    </li>
     <li class="toctree-l3"><a class="reference internal" href="#kalman_filter">kalman_filter</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#scipy_filter">scipy_filter</a>
@@ -115,7 +117,13 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#find_n">find_N</a>
     </li>
+    <li class="toctree-l3"><a class="reference internal" href="#strategy_random_pred">strategy_random_pred</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#is_doji">is_doji</a>
+    </li>
         </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tradingclient">TradingClient</a>
     </li>
     </ul>
                     </li>
@@ -185,6 +193,11 @@
 trader = PatternFinder(TICKER, 0, df=df, interval='1d')  #  please, use your df
 </code></pre>
 
+<h3 id="set_client">set_client</h3>
+<p>This must be run for
+get_trading_predict and realtime_trading.
+This method must be passed a class inherited
+from TradingClient.</p>
 <h3 id="kalman_filter">kalman_filter</h3>
 <p>A method that returns the closure data to which the kalman filter has been applied N times.
 Ret type: pd.DataFrame</p>
@@ -343,11 +356,11 @@ trader.strategy_collider(args_first_func=(trader.returns,), args_second_func=(re
 </code></pre>
 
 <h3 id="get_trading_predict">get_trading_predict</h3>
-<p>Getting the trading predict based on current returns</p>
+<p>Getting the trading predict based on current returnsю</p>
 <h3 id="realtime_trading">realtime_trading</h3>
 <p>To trading on real-time.</p>
 <h3 id="log_deposit-log_data">log_deposit / log_data</h3>
-<p>Log X-axis on data/deposit</p>
+<p>Log X-axis on data/depositю</p>
 <h3 id="backtest">backtest</h3>
 <p>Similar to a basic_backtest, but a candlestick deposit.</p>
 <h3 id="load_model">load_model</h3>
@@ -357,6 +370,35 @@ trader.strategy_collider(args_first_func=(trader.returns,), args_second_func=(re
 you need to prepare a scaler suitable for the perception of the neural network.</p>
 <h3 id="find_n">find_N</h3>
 <p>Strategy using trading patterns.</p>
+<h3 id="strategy_random_pred">strategy_random_pred</h3>
+<p>This strategy produces random results.</p>
+<h3 id="is_doji">is_doji</h3>
+<p>Returns a list from T / F. If the opening
+price of the candlestick is equal to the closing price, then this is Doji (True)</p>
+<h2 id="tradingclient">TradingClient</h2>
+<p>This class is needed for receiving data and trading,
+if you want to trade on your system and receive data
+not from binance, inherit this class and change the
+code in your class for your system.</p>
+<pre><code>class TradingClient(object):
+    def __init__(self):
+        pass
+
+    def get_ticker_price(self, ticker):
+        client = Client()
+        return float(client.get_symbol_ticker(symbol=ticker)['price'])
+
+    def get_data(self, ticker, interval):
+        return get_binance_data(ticker, interval)
+
+    def new_order_buy(self): pass
+
+    def new_order_sell(self): pass
+
+    def exit_last_order(self): pass
+</code></pre>
+
+<p>Each of these methods needs to be rewritten for your system.</p>
               
             </div>
           </div>
