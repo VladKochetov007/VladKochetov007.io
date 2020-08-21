@@ -391,9 +391,9 @@ code in your class for your system.</p>
     def get_data(self, ticker, interval):
         return get_binance_data(ticker, interval)
 
-    def new_order_buy(self): pass
+    def new_order_buy(self, ticker, credit_leverage, quantity): pass
 
-    def new_order_sell(self): pass
+    def new_order_sell(self, ticker, credit_leverage, quantity): pass
 
     def exit_last_order(self): pass
 </code></pre>
