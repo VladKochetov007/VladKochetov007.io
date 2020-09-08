@@ -192,7 +192,7 @@
 </li>
 </ul>
 <pre><code>df = yf.download(TICKER, period='5y', interval='1d')
-trader = PatternFinder(TICKER, 0, df=df, interval='1d')  #  please, use your df
+trader = PatternFinder(TICKER, df=df, interval='1d')  #  please, use your df
 </code></pre>
 
 <h3 id="set_client">set_client</h3>
@@ -282,7 +282,7 @@ After that, the method produces strategy_diff and returns a
 tuple of predictions for trading and neural network predictions.</p>
 <pre><code>TICKER = 'EUR=X'
 df = yf.download(TICKER)
-trader = PatternFinder(TICKER, 0, df=df, interval='1d')
+trader = PatternFinder(TICKER, df=df, interval='1d')
 trader.set_pyplot()
 trader.load_model('../model-regression')
 trader.strategy_regression_model()
@@ -291,7 +291,7 @@ trader.strategy_regression_model()
 <p>or</p>
 <pre><code>TICKER = 'EUR=X'
 df = yf.download(TICKER)
-trader = PatternFinder(TICKER, 0, df=df, interval='1d')
+trader = PatternFinder(TICKER, df=df, interval='1d')
 trader.set_pyplot()
 trader.get_network_regression([df])
 trader.strategy_regression_model()
@@ -303,7 +303,7 @@ The neural network receives data from ta.add_all_ta_features (my_df, fill_na = T
 <p>trading predictions are based on the Kalman or scipy filter that smoothes the data (and scaled ta.add_all_ta_features()).</p>
 <pre><code>TICKER = 'EUR=X'
 df = yf.download(TICKER)
-trader = PatternFinder(TICKER, 0, df=df, interval='1d')
+trader = PatternFinder(TICKER, df=df, interval='1d')
 trader.set_pyplot()
 trader.get_trained_network([df])
 trader.strategy_with_network()
